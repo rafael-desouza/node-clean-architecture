@@ -1,7 +1,7 @@
 import { HttpError } from './http-error.error';
 
 export class UnauthorizedError extends HttpError {
-  constructor(message: string = 'Credenciais inválidas ou não fornecidas') {
+  constructor(message: string = 'Unauthorized access') {
     super(message, 401, 'UnauthorizedError');
   }
 }
