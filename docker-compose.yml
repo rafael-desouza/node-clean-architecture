@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  db-test:
+    image: postgres:16-alpine
+    container_name: postgres_db_test 
+    restart: always
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=test_database
+    volumes:
+      - postgres_test_data:/var/lib/postgresql/data 
+    ports:
+      - "5434:5432"
+    networks:
+      - test-network
+
+  adminer-test:
+    image: adminer
+    container_name: adminer_ui_test
+    restart: always
+    ports:
+      - "8081:8080"
+    depends_on:
+      - db-test
+    networks:
+      - test-network
+
+networks:
+  test-network:
+    driver: bridge
+
+volumes:
+  postgres_test_data:

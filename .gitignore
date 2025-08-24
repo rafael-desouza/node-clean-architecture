@@ -1,0 +1,21 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Logs
+logs
+*.log
+
+# Test
+coverage
+.env
+.env.test
+.env.development
+
+
+# Build output
+dist
+
+# Editor
+.vscode
+
